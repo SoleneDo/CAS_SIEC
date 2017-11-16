@@ -1,0 +1,32 @@
+# TEST 1 : ULTRASONS
+ --> ULTRASON MILIEU AVANT
+
+Dans le main, je calcule la distance en cm entre l'obstacle et la voiture à l'aide
+de la fonction "US_CalcDistance(us_position)" contenue dans le fichier source "us_sensors.c/h".
+Dans le debugger, je regarde la valeur que me retourne la fonction.
+
+**RESULTAT** : une acquisition sur deux (avec point d'arrêt de façon apériodique) est correcte et les autres 
+	   sont toutes égales à 32/33 cm. 
+
+**A CHERCHER** : A quoi correspond ce "32" ? correspond-t-il au "glitch" ? Quelles sont les valeurs reçues
+	     avec le CAN ?
+
+
+--> ULTRASON GAUCHE AVANT
+
+Même test
+
+**RESULTAT** : même chose avec comme valeur fixe 6
+
+
+# TEST 2 : DIRECTION
+
+Dans le main, je récupère le direction des roues avant grâce à la fonction "Direction_get()" contenue dans le 
+fichier source "direction.c"
+Dans le debugger, je regarde la valeur renvoyée
+
+**RESULTAT** : c'est un uint8_t qui est renvoyé. Lorsque les roues sont tournées à fond vers la droite, la fonction 
+retourne "0x72 'r'". Quand je tourne à fond vers la gauche, je reçoit "0xA7 '§'". Et quand on roule droit, je 
+reçoit "0x8D '' "
+
+**A CHERCHER** : comprendre la signification de ces valeurs 
